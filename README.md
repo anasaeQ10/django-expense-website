@@ -36,13 +36,14 @@ Le projet utilise **Django** pour le backend et la gestion de la base de donnée
 
 ---
 
+## 👨‍💻 Auteurs
+
+- Anas AIT EL QADI 
+- Mohamed Taha IZMAR
+
 ## ▶️ Démarrer le projet
 
 ### 📁 Cloner et accéder au dossier :
 ```bash
 cd expenseswebsite
 
-## 👨‍💻 Auteurs
-
-- Anas AIT EL QADI 
-- Mohamed Taha IZMAR
