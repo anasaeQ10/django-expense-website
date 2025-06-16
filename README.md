@@ -38,8 +38,9 @@ Le projet utilise **Django** pour le backend et la gestion de la base de donnée
 
 ## 👨‍💻 Auteurs
 
-- Anas AIT EL QADI 
-- Mohamed Taha IZMAR
+- Anas AIT EL QADI
+
+---
 
 ## ▶️ Démarrer le projet
 
