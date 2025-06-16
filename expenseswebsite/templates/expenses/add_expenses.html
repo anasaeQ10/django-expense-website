@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-light rounded-3">
+            <li class="breadcrumb-item"><a href="{% url 'expenses' %}">Expenses</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add Expenses</li>
+        </ol>
+    </nav>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Add New Expense</h5>
+        </div>
+        <div class="card-body">
+            <form action="{% url 'add-expenses' %}" method="post">
+                {% include 'partials/_messages.html' %}
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                    <label for="amount" class="form-label">Amount</label>
+                    <input type="number" class="form-control" id="amount" name="amount" value="{{ values.amount }}" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <input type="text" class="form-control" id="description" name="description" value="{{ values.description }}" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="category" class="form-label">Category</label>
+                    <select class="form-select" id="category" name="category" required>
+                        {% for category in categories %}
+                            <option value="{{ category.name }}">{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="expense_date" class="form-label">Date of Expense</label>
+                    <input type="date" class="form-control" id="expense_date" name="expense_date" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

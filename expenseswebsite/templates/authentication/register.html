@@ -1,0 +1,52 @@
+{% extends 'base_auth.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container" style="margin-top: 50px;">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm" style="border-radius: 10px;">
+                <div class="card-body" style="padding: 30px;">
+                    <div class="card-title text-center">
+                        <h4 style="font-family: 'Arial', sans-serif; font-weight: bold;">Register for a Free Account</h4>
+                        <hr style="border-top: 1px solid #bbb;"/>
+                    </div>
+                    <form action="{% url 'register' %}" method="post">
+                        {% csrf_token %}
+                        {% include 'partials/_messages.html' %}
+                        <div class="form-group">
+                            <label for="usernameField" style="font-family: 'Arial', sans-serif;">Username</label>
+                            <input type="text" name="username" placeholder="Enter your username" id="usernameField" class="form-control" value="{{ fieldValues.username }}" style="border-radius: 5px; border: 1px solid #ccc; padding: 10px;">
+                            <div class="invalid-feedback" style="display:none"></div>
+                            <p class="text-sm text-success usernameSuccessOutput"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailField" style="font-family: 'Arial', sans-serif;">Email</label>
+                            <input type="email" name="email" placeholder="Enter your email" class="form-control" id="emailField" value="{{ fieldValues.email }}" style="border-radius: 5px; border: 1px solid #ccc; padding: 10px;">
+                            <div class="emailFeedBackArea invalid-feedback" style="display:none"></div>
+                            <p class="text-sm text-success emailSuccessOutput"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="passwordField" style="font-family: 'Arial', sans-serif;">Password</label>
+                            <input type="password" name="password" placeholder="Enter your password" class="form-control" id="passwordField" style="border-radius: 5px; border: 1px solid #ccc; padding: 10px;">
+                            <small class="float-right py-1 showPasswordToggle" style="cursor: pointer; color: #007bff;">SHOW</small>
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="submit" value="Register" class="btn btn-primary btn-block mt-3" style="background-color: #007bff; border-color: #007bff; padding: 10px; border-radius: 5px; font-family: 'Arial', sans-serif;"/>
+                        </div>
+                    </form>
+                    <div class="text-center mt-4">
+                        <span class="text-muted" style="font-family: 'Arial', sans-serif;">Already registered? </span><a href="{% url 'login' %}" style="color: #007bff; text-decoration: none;">Log in</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/register.js' %}"></script>
+
+
+{% endblock content %}

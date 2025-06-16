@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 80px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+
+    .profile-info {
+        margin-bottom: 30px;
+    }
+
+    .profile-info label {
+        font-weight: bold;
+        color: #555;
+        font-size: 1.1em;
+    }
+
+    .profile-info .info-box {
+        padding: 15px;
+        background-color: #f1f1f1;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    .profile-info p {
+        margin: 0;
+        color: #333;
+        font-size: 1.2em;
+    }
+
+    .edit-profile-link {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .edit-profile-link a {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        font-size: 1.1em;
+    }
+
+    .edit-profile-link a:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="container">
+    <h2>Your Profile</h2>
+    <div class="profile-info">
+        <label>Username:</label>
+        <div class="info-box">
+            <p>{{ user.username }}</p>
+        </div>
+    </div>
+    <div class="profile-info">
+        <label>Email:</label>
+        <div class="info-box">
+            <p>{{ user.email }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

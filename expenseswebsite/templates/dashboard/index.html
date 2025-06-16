@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-4">
+    
+
+    <!-- Section des résumés -->
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card" style="border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease-in-out; background-color: #dc3545; color: #ffffff;">
+                <div class="card-body" style="padding: 20px;">
+                    <h5 class="card-title" style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Total Expenses</h5>
+                    <p class="card-text" style="font-size: 16px;">{{ total_expenses }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card" style="border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease-in-out; background-color: #007bff; color: #ffffff;">
+                <div class="card-body" style="padding: 20px;">
+                    <h5 class="card-title" style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Total Incomes</h5>
+                    <p class="card-text" style="font-size: 16px;">{{ total_incomes }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card" style="border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease-in-out; background-color: #28a745; color: #ffffff;">
+                <div class="card-body" style="padding: 20px;">
+                    <h5 class="card-title" style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Budget</h5>
+                    <p class="card-text" style="font-size: 16px;">{{ budget }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Graphiques -->
+    <div class="row">
+
+                <div class="card-body">
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                    <canvas id="expenseChart" width="350" height="350"></canvas>
+                    <script src="{% static 'js/dashexpenses.js' %}"></script>
+                </div>
+
+      
+    </div>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <div class="row mb-3">
+        <div class="col-md-10">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb"
+                    style="background-color: #ffffff; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding: 10px 15px;">
+                    <li class="breadcrumb-item">
+                        <a href="#" style="text-decoration: none; color: #007bff; ">Income</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page" style="color: #6c757d;">Income Summary</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-md-2 text-end">
+            <a href="" class="btn btn-primary btn-add-expense" style="background-color: #007bff; color: #fff; border-color: #007bff; padding: 8px 16px; border-radius: 5px; text-decoration: none;" >
+                <i class="fas fa-plus"  ></i> BACK
+            </a>
+        </div>
+
+        <div>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <canvas id="myChart" whidth="350" height="350" ></canvas>
+        </div>
+          
+          
+          
+
+    </div>
+
+
+</div>
+
+<script src="{% static 'js/stats_income.js' %}"></script>
+
+{% endblock content %}

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .container {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-label {
+        font-weight: bold;
+        margin-bottom: 8px;
+        font-size: 18px; /* Augmente la taille de police */
+        color: #333; /* Couleur de texte plus sombre */
+    }
+    
+    .form-select {
+        width: calc(100% - 90px); /* Réduit la largeur pour laisser de l'espace au bouton */
+        margin-right: 10px;
+        padding: 12px; /* Augmente le rembourrage pour une meilleure visibilité */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px; /* Augmente la taille de police */
+    }
+
+    h5 {
+        text-align: center;
+        color: #007bff;
+        margin-bottom: 20px;
+        font-size: 24px; /* Augmente la taille de police */
+    }
+    
+    .btn-save {
+        padding: 12px 24px; /* Augmente le padding pour un bouton plus grand */
+        font-size: 16px; /* Augmente la taille de police */
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .btn-save:hover {
+        background-color: #0056b3;
+    }
+    
+    hr {
+        margin: 20px 0;
+        border: none;
+        border-top: 1px solid #ccc;
+    }
+</style>
+
+<div class="container mt-4">
+    <h5 class="mb-3">Preferred Currency</h5>
+    {% include 'partials/_messages.html' %}
+
+    <form action="{% url 'preferences' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="currencySelect" class="form-label">Select Your Currency</label>
+            <div class="input-group">
+                <select name="currency" class="form-select" id="currencySelect">
+                    {% if user_preferences.currency %}
+                        <option name="currency" selected value="{{ user_preferences.currency }}">
+                            {{ user_preferences.currency }}
+                        </option>
+                    {% endif %}
+                    {% for Currency in currencies %}
+                        <option name="currency" value="{{ Currency.name }} - {{ Currency.value }}">
+                            {{ Currency.name }} - {{ Currency.value }}
+                        </option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-save">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,406 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Management</title>
+    <style>
+        /* Reset and Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        header nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #f0f0f0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(to right bottom, rgba(0, 123, 255, 0.8), rgba(0, 123, 255, 0.6)), url('img/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hero .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* About Us Section */
+        .about-us {
+            background-color: #ffffff;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .about-us h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .about-us p {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Features Section */
+        .features {
+            background-color: #f8f9fa;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .feature-item {
+            margin-bottom: 40px;
+        }
+
+        .feature-item h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .feature-item p {
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Team Section */
+        .team {
+            background-color: #ffffff;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .team h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .team-member {
+            margin-bottom: 40px;
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            object-fit: cover;
+            border: 5px solid #007bff;
+        }
+
+        .team-member h3 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+
+        .team-member p {
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: #f8f9fa;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .contact p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .contact a:hover {
+            color: #0056b3;
+        }
+
+        /* Login / Sign Up Section */
+        .auth {
+            background-color: #007bff;
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .auth h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .auth-forms {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .auth-forms .login-form, .auth-forms .signup-form {
+            margin: 0 20px;
+        }
+
+        .auth-forms h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .auth-forms a {
+            display: inline-block;
+            background-color: #fff;
+            color: #007bff;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .auth-forms a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Expense Management</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#auth">Login / Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Manage Your Finances Easily</h2>
+                <p>A simple and effective application to track your expenses and stick to your budget.</p>
+                <a href="#features" class="btn">Discover Features</a>
+            </div>
+        </section>
+
+        <section id="about" class="about-us">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>At Expense Management, our mission is to help you manage your finances better by providing simple and effective tools to track your expenses and stay on budget.</p>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2>Features</h2>
+                <div class="feature-item">
+                    <h3>Expense Tracking</h3>
+                    <p>Record and categorize your expenses to get an overview of your finances.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Budget Management</h3>
+                    <p>Create budgets for different categories and track your progress.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Reports and Statistics</h3>
+                    <p>Generate reports and charts to analyze your spending habits.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="team">
+            <div class="container">
+                <h2>Our Team</h2>
+                <div class="team-member">
+                    <img src="{% static 'img/anas_amine.jpeg' %}" alt="Photo of John Doe">
+                    <h3>Anas AIT EL QADI</h3>
+                    <p>Founder & CEO</p>
+                </div>
+                <div class="team-member">
+                    <img src="{% static 'img/taha.png' %}" alt="Photo of Mohamed Taha IZMAR">
+                    <h3>Mohamed Taha IZMAR</h3>
+                    <p>Founder & Chief Financial Officer</p>
+                </div>
+                <!-- Add more team members here -->
+            </div>
+        </section>
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>For any inquiries, feel free to contact us at <a href="mailto:contact@expensemanagement.com">contact@expensemanagement.com</a>.</p>
+            </div>
+        </section>
+    
+        <section id="auth" class="auth">
+            <div class="container">
+                <h2>Login / Sign Up</h2>
+                <div class="auth-forms">
+                    <div class="login-form">
+                        <h3><a href="{% url 'register' %}" class="btn">Register</a></h3>
+                    </div>
+                    <div class="signup-form">
+                        <h3><a href="{% url 'login' %}" class="btn">Log in</a></h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Expense Management. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Fonction pour un défilement fluide vers une ancre
+        function smoothScroll(target, duration) {
+            var targetElement = document.querySelector(target);
+            var targetPosition = targetElement.offsetTop;
+            var startPosition = window.pageYOffset;
+            var distance = targetPosition - startPosition;
+            var startTime = null;
+
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                var timeElapsed = currentTime - startTime;
+                var run = ease(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+
+            function ease(t, b, c, d) {
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t + b;
+                t--;
+                return -c / 2 * (t * (t - 2) - 1) + b;
+            }
+            requestAnimationFrame(animation);
+        }
+    
+        // Écouteurs d'événements pour les liens de navigation
+        document.querySelectorAll('nav ul li a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+    
+                var target = this.getAttribute('href');
+                var duration = 1000; // Durée de l'animation en millisecondes
+    
+                smoothScroll(target, duration);
+            });
+        });
+    </script>
+</body>
+</html>
+
