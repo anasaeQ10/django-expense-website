@@ -48,6 +48,8 @@ Le projet utilise **Django** pour le backend et la gestion de la base de donnée
 <img width="380" height="182" alt="Screenshot 2025-07-20 at 09 24 23" src="https://github.com/user-attachments/assets/64204e1c-7fdb-4520-8565-7d3250f6e693" />
 <img width="427" height="203" alt="Screenshot 2025-07-20 at 09 24 47" src="https://github.com/user-attachments/assets/f2660b9e-9c6d-48f9-b9ed-7c21fa80eefc" />
 <img width="428" height="204" alt="Screenshot 2025-07-20 at 09 25 18" src="https://github.com/user-attachments/assets/2b8bc8a0-11af-4a44-b847-2c173302c2f2" />
+<img width="505" height="240" alt="Screenshot 2025-07-20 at 09 26 47" src="https://github.com/user-attachments/assets/a4380acd-f571-4a32-80ad-0f324e0679e5" />
+
 
 
 ---
